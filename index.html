@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="chars.js"></script>
+		<style>
+			@font-face {
+				font-family: 'Noto Sans SC';
+				font-style: normal;
+				font-weight: normal;
+				src: url('NotoSansSC-Regular.ttf') format('truetype');
+			}
+
+			body {
+				text-align: center;
+			}
+
+			#char-box {
+				font: 12em 'Noto Sans SC', sans-serif;
+			}
+			.show { opacity: 1; }
+			.hide { opacity: 0; }
+
+			#control-box * { font-size: 1.5rem; }
+			#lr-control button { padding: 0 0.5em; }
+			#lr-control input { width: 5em; }
+		</style>
+	</head>
+	<body>
+		<div id='char-box' class='show'>字</div>
+		<div id='control-box'>
+			<button type='button' onclick='toggleOpacity();'>show/hide</button>
+			<div id='lr-control'>
+				<button type='button' onclick='prev();'>&lt;</button>
+				<input id='char-index' inputmode='numeric' type='number' min='0' oninput='showChar();'></input>
+				<button type='button' onclick='next();'>&gt;</button>
+			</div>
+		</div>
+	</body>
+</html>
