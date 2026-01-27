@@ -22,20 +22,17 @@
 			.show { opacity: 1; }
 			.hide { opacity: 0; }
 
-			#control-box * { font-size: 1.5rem; }
-			#lr-control button { padding: 0 0.5em; }
-			#lr-control input { width: 5em; }
+			.control { font-size: 1.5rem; }
+			#char-index { width: 5em; }
 		</style>
 	</head>
 	<body>
+		<input class='control' id='char-index' disabled='' inputmode='numeric' type='number' min='0' oninput='showChar();'></input>
 		<div id='char-box' class='show'>字</div>
-		<div id='control-box'>
-			<button type='button' onclick='toggleOpacity();'>show/hide</button>
-			<div id='lr-control'>
-				<button type='button' onclick='prev();'>&lt;</button>
-				<input id='char-index' inputmode='numeric' type='number' min='0' oninput='showChar();'></input>
-				<button type='button' onclick='next();'>&gt;</button>
-			</div>
+		<div>
+			<button class='control' id='btn-prev' disabled='' type='button'>&lt;</button>
+			<button class='control' id='btn-toggle-vis' disabled='' type='button'>show/hide</button>
+			<button class='control' id='btn-next' disabled='' type='button'>&gt;</button>
 		</div>
 	</body>
 </html>
