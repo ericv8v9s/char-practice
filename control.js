@@ -1,38 +1,40 @@
 "use strict";
 
 
-fetch("/char-practice/charlist").then((resp) => resp.text().then(
-function(charlist) {
+//fetch("/char-practice/segments").then((resp) => resp.text().then(
+fetch("/segments").then((resp) => resp.text().then(
+	function(segments) {
+		segments = segments.split(/\r?\n/);
 		function toggleOpacity() {
 			let toggle = {
 				"show": "hide",
 				"hide": "show"
 			};
-			let charBox = document.getElementById("char-box");
-			charBox.className = toggle[charBox.className];
+			let dispBox = document.getElementById("disp-box");
+			dispBox.className = toggle[dispBox.className];
 		}
 
 
 		function prev() {
-			let indexBox = document.getElementById("char-index");
+			let indexBox = document.getElementById("disp-index");
 			let index = sanatizeIndex(indexBox.value);
 			indexBox.value = Math.max(0, index - 1);
-			showChar();
+			updateDisplay();
 		}
 
 
 		function next() {
-			let indexBox = document.getElementById("char-index");
+			let indexBox = document.getElementById("disp-index");
 			let index = sanatizeIndex(indexBox.value);
-			indexBox.value = Math.min(charlist.length - 1, index + 1);
-			showChar();
+			indexBox.value = Math.min(segments.length - 1, index + 1);
+			updateDisplay();
 		}
 
 
-		function showChar() {
-			let charBox = document.getElementById("char-box");
-			let indexBox = document.getElementById("char-index");
-			charBox.textContent = charlist[sanatizeIndex(indexBox.value)];
+		function updateDisplay() {
+			let dispBox = document.getElementById("disp-box");
+			let indexBox = document.getElementById("disp-index");
+			dispBox.textContent = segments[sanatizeIndex(indexBox.value)];
 		}
 
 
@@ -44,8 +46,8 @@ function(charlist) {
 				return 0;
 			if (value < 0)
 				return 0;
-			if (value >= charlist.length)
-				return charlist.length - 1;
+			if (value >= segments.length)
+				return segments.length - 1;
 			return value;
 		}
 
@@ -57,12 +59,12 @@ function(charlist) {
 				return;
 			let btnNext = document.getElementById('btn-next');
 			let btnToggle = document.getElementById('btn-toggle-vis');
-			let indexBox = document.getElementById('char-index');
+			let indexBox = document.getElementById('disp-index');
 
 			btnPrev.addEventListener("click", prev);
 			btnNext.addEventListener("click", next);
 			btnToggle.addEventListener("click", toggleOpacity);
-			indexBox.addEventListener("input", showChar);
+			indexBox.addEventListener("input", updateDisplay);
 
 			[btnPrev, btnNext, btnToggle, indexBox]
 				.map((e) => e.removeAttribute('disabled'));
