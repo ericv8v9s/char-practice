@@ -17,10 +17,10 @@
 			}
 
 			#disp-box {
-				font: 12em 'Noto Sans SC', sans-serif;
-				white-space: nowrap;
+				font: 4em 'Noto Sans SC', sans-serif;
+				/*white-space: nowrap;
 				overflow-x: auto;
-				overflow-y: hidden;
+				overflow-y: hidden;*/
 			}
 			.show { opacity: 1; }
 			.hide { opacity: 0; }
@@ -31,11 +31,11 @@
 	</head>
 	<body>
 		<input class='control' id='disp-index' disabled='' inputmode='numeric' type='number' min='0'></input>
-		<div id='disp-box' class='show'>　</div>
 		<div>
 			<button class='control' id='btn-prev' disabled='' type='button'>&lt;</button>
 			<button class='control' id='btn-toggle-vis' disabled='' type='button'>show/hide</button>
 			<button class='control' id='btn-next' disabled='' type='button'>&gt;</button>
 		</div>
+		<div id='disp-box' class='show'>　</div>
 	</body>
 </html>
