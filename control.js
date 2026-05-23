@@ -1,8 +1,8 @@
 "use strict";
 
 
-//fetch("/char-practice/segments").then((resp) => resp.text().then(
-fetch("/segments").then((resp) => resp.text().then(
+fetch("/char-practice/segments").then((resp) => resp.text().then(
+//fetch("/segments").then((resp) => resp.text().then(
 	function(segments) {
 		segments = segments.split(/\r?\n/);
 		function toggleOpacity() {
